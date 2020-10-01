@@ -32,9 +32,16 @@ function App() {
     e.preventDefault()
     chatRef.push({
       username: 'Hassan',
-      message: "Hej Hej"
+      message: currentMessage
+    }, function(error) {
+      if(error) {
+        console.log("failed")
+      } else {
+        setCurrentMessage("")
+      }
     })
   }
+
   return (
     <div>
       <h1>Firebase</h1>
