@@ -57,6 +57,15 @@ function App() {
           <input type="text" value={currentMessage} onChange={e => setCurrentMessage(e.target.value)} />
           <button type="submit">Send Message</button>
         </form>
+        <div>
+          {messageList && Object.entries(messageList).reverse().map(messageArr => {
+            const key = messageArr[0]
+            const messageItem = messageArr[1]
+            return (
+              <p key={key}>{messageItem.username} says: "{messageItem.message}"</p>
+            )
+          })}
+        </div>
       </div>
     </div>
   );
