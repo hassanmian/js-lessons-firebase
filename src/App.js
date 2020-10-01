@@ -15,7 +15,10 @@ function App() {
   5. Andra funktioner
   */ 
   useEffect(() => {
-    getUserList()
+    // getUserList()
+    userRef.on('value', snapshot => {
+      setUserList(snapshot.val())
+    })
   }, [])
   
   function getUserList() {
