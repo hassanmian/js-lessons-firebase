@@ -3,6 +3,7 @@ import firebase from "./firebase"
 
 function App() {
   const [userList, setUserList] = useState(null)
+  const [currentMessage, setCurrentMessage] = useState("")
   
   const database = firebase.database()
   const userRef = database.ref("users")
