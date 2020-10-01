@@ -3,6 +3,7 @@ import firebase from "./firebase"
 
 function App() {
   const [userList, setUserList] = useState(null)
+  const [messageList, setMessageList] = useState(null)
   const [currentMessage, setCurrentMessage] = useState("")
   
   const database = firebase.database()
@@ -20,6 +21,10 @@ function App() {
     // getUserList()
     userRef.on('value', snapshot => {
       setUserList(snapshot.val())
+    })
+
+    chatRef.on('value', snapshot => {
+      setMessageList(snapshot.val())
     })
   }, [])
 
