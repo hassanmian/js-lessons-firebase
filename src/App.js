@@ -20,13 +20,6 @@ function App() {
       setUserList(snapshot.val())
     })
   }, [])
-  
-  function getUserList() {
-    const url = "https://js-lessons-a0fc7.firebaseio.com/users.json"
-    fetch(url)
-    .then(res => res.json())
-    .then(data => setUserList(data))
-  }
 
   return (
     <div>
