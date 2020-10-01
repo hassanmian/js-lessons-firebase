@@ -5,6 +5,7 @@ function App() {
   const [userList, setUserList] = useState(null)
   
   const database = firebase.database()
+  const userRef = database.ref("users")
   /*
   Struktur på funktioner/variabler i komponenter:
   1. props
