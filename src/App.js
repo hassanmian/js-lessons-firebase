@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
 
 function App() {
+  const [userList, setUserList] = useState(null)
+  
+  /*
+  Struktur på funktioner/variabler i komponenter:
+  1. props
+  2. state variabler
+  3. useEffects
+  4. Event Handlers
+  5. Andra funktioner
+  */ 
+  useEffect(() => {
+    getUserList()
+  }, [])
+  
+  function getUserList() {
+    const url = "https://js-lessons-a0fc7.firebaseio.com/users.json"
+    fetch(url)
+    .then(res => res.json())
+    .then(data => setUserList(data))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Firebase</h1>
+      {userList && userList.map(userItem => {
+        return (
+          <p key={userItem.id}>{userItem.name}</p>
+        )
+      })}
     </div>
   );
 }
