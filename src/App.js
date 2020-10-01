@@ -6,6 +6,7 @@ function App() {
   
   const database = firebase.database()
   const userRef = database.ref("users")
+  const chatRef = database.ref("chat")
   /*
   Struktur på funktioner/variabler i komponenter:
   1. props
@@ -21,6 +22,13 @@ function App() {
     })
   }, [])
 
+  function handleChatPost(e) {
+    e.preventDefault()
+    chatRef.push({
+      username: 'Hassan',
+      message: "Hej Hej"
+    })
+  }
   return (
     <div>
       <h1>Firebase</h1>
@@ -29,6 +37,14 @@ function App() {
           <p key={userItem.id}>{userItem.name}</p>
         )
       })}
+      
+      <div>
+        <h3>My Chat</h3>
+        <form onSubmit={handleChatPost}>
+          <input type="text" value={currentMessage} onChange={e => setCurrentMessage(e.target.value)} />
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
     </div>
   );
 }
